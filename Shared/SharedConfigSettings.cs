@@ -364,13 +364,10 @@ namespace Forge.Configuration.Shared
 
                     foreach (ConfigSettingsBase d in mKnownConfigSettings)
                     {
-                        if (localConfigFile.Equals(d.DefaultConfigurationFile))
+                        if (localConfigFile.Equals(d.DefaultConfigurationFile) && d.RestartOnExternalChanges)
                         {
-                            if (d.RestartOnExternalChanges)
-                            {
-                                watchTypeConfigSections.Add(d);
-                                d.RestartOnExternalChanges = false;
-                            }
+                            watchTypeConfigSections.Add(d);
+                            d.RestartOnExternalChanges = false;
                         }
                     }
 
